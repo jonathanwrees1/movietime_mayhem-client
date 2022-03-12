@@ -12,7 +12,7 @@ export class MovieView extends React.Component {
         const { movie, onBackClick } = this.props;
         return( <div className="movie-view">
                 <div className="movie-poster">
-                <img src={movie.ImagePath} height={400} width={300} alt= "image" crossOrigin="anonymous" />
+                <img src={movie.ImageUrl} height={400} width={300} alt= "image" crossOrigin="anonymous" />
                 </div><br/>
 
                 <div className="movie-title">
@@ -27,16 +27,16 @@ export class MovieView extends React.Component {
 
                     <div className= "movie-genre">
                         <span className="label">Genre: </span>
-                        <span className="value">{movie.Genre}</span>
+                        <span className="value">{movie.Genre.Name}</span>
                     </div><br/>
 
                     <div className= "movie-director">
                         <span className="label">Director: </span>
-                        <span className="value">{movie.Director}</span>
+                        <span className="value">{movie.Director.Name}</span>
                     </div><br/>
 
                     <div className= "movie-released">
-                        <span className="label">Realease Date: </span>
+                        <span className="label">Release Date: </span>
                         <span className="value">{movie.Released}</span>
                     </div><br/>
 
