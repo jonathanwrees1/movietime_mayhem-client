@@ -27,6 +27,7 @@ export function RegistrationView(props) {
           onChange={(e) => setUserName(e.target.value)}
         />
       </label>
+
       <label>
         Password:
         <input
@@ -35,14 +36,16 @@ export function RegistrationView(props) {
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
+
       <label>
         Email:
         <input
-          type='text'
+          type='password'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
       </label>
+
       <label>
         Birthday:
         <input
@@ -55,12 +58,14 @@ export function RegistrationView(props) {
       <button type='submit' onClick={handleSubmit}>
         Submit
       </button>
+
+      <button type='submit' onClick={handleSubmit}>
+        Deregister
+      </button>
     </form>
   );
 }
 
 RegistrationView.propTypes = {
-  UserName: PropTypes.string.isRequired,
-  Password: PropTypes.string.isRequired,
-  Email: PropTypes.string.isRequired,
-}.isRequired;
+  onRegistration: PropTypes.func.isRequired,
+};

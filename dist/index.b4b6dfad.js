@@ -22206,6 +22206,8 @@ class MainView extends _reactDefault.default.Component {
     }
 }
 exports.default = MainView;
+MainView.proptypes = {
+};
 
   $parcel$ReactRefreshHelpers$f7a6.postlude(module);
 } finally {
@@ -23020,7 +23022,8 @@ MovieView.propTypes = {
             Name: _propTypesDefault.default.string.isRequired
         }),
         Released: _propTypesDefault.default.string.isRequired
-    }).isRequired
+    }).isRequired,
+    onBackClick: _propTypesDefault.default.func.isRequired
 };
 
   $parcel$ReactRefreshHelpers$e9f6.postlude(module);
@@ -24617,7 +24620,7 @@ function LoginView(props) {
         console.log(username, password);
         /* Send a request to the server for authentication */ /* then call props.onLoggedIn(username) */ props.onLoggedIn(username);
     };
-    return(/*#__PURE__*/ _reactDefault.default.createElement("form", null, /*#__PURE__*/ _reactDefault.default.createElement("label", null, "UserName:", /*#__PURE__*/ _reactDefault.default.createElement("input", {
+    return(/*#__PURE__*/ _reactDefault.default.createElement("form", null, /*#__PURE__*/ _reactDefault.default.createElement("div", null, "Login Here"), /*#__PURE__*/ _reactDefault.default.createElement("br", null), /*#__PURE__*/ _reactDefault.default.createElement("label", null, "UserName:", /*#__PURE__*/ _reactDefault.default.createElement("input", {
         type: "text",
         value: username,
         onChange: (e)=>setUserName(e.target.value)
@@ -24632,10 +24635,9 @@ function LoginView(props) {
 }
 _s(LoginView, "77lfu0QofYWzE21P+Ljjc0SKKFw=");
 _c = LoginView;
-LoginView.propTypes = ({
-    UserName: _propTypesDefault.default.string.isRequired,
-    Password: _propTypesDefault.default.string.isRequired
-}).isRequired;
+LoginView.propTypes = {
+    onLoggedIn: _propTypesDefault.default.func.isRequired
+};
 var _c;
 $RefreshReg$(_c, "LoginView");
 
@@ -24680,7 +24682,7 @@ function RegistrationView(props) {
         value: password,
         onChange: (e)=>setPassword(e.target.value)
     })), /*#__PURE__*/ _reactDefault.default.createElement("label", null, "Email:", /*#__PURE__*/ _reactDefault.default.createElement("input", {
-        type: "text",
+        type: "password",
         value: email,
         onChange: (e)=>setEmail(e.target.value)
     })), /*#__PURE__*/ _reactDefault.default.createElement("label", null, "Birthday:", /*#__PURE__*/ _reactDefault.default.createElement("input", {
@@ -24690,15 +24692,16 @@ function RegistrationView(props) {
     })), /*#__PURE__*/ _reactDefault.default.createElement("button", {
         type: "submit",
         onClick: handleSubmit
-    }, "Submit")));
+    }, "Submit"), /*#__PURE__*/ _reactDefault.default.createElement("button", {
+        type: "submit",
+        onClick: handleSubmit
+    }, "Deregister")));
 }
 _s(RegistrationView, "iEOEpagk8SbrGlv7Xw+f4+HPFE0=");
 _c = RegistrationView;
-RegistrationView.propTypes = ({
-    UserName: _propTypesDefault.default.string.isRequired,
-    Password: _propTypesDefault.default.string.isRequired,
-    Email: _propTypesDefault.default.string.isRequired
-}).isRequired;
+RegistrationView.propTypes = {
+    onRegistration: _propTypesDefault.default.func.isRequired
+};
 var _c;
 $RefreshReg$(_c, "RegistrationView");
 

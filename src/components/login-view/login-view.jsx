@@ -15,6 +15,8 @@ export function LoginView(props) {
 
   return (
     <form>
+      <div>Login Here</div>
+      <br />
       <label>
         UserName:
         <input
@@ -38,6 +40,5 @@ export function LoginView(props) {
   );
 }
 LoginView.propTypes = {
-  UserName: PropTypes.string.isRequired,
-  Password: PropTypes.string.isRequired,
-}.isRequired;
+  onLoggedIn: PropTypes.func.isRequired,
+};
