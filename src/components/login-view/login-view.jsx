@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import {
+  Button,
+  Container,
+  Row,
+  Col,
+  Form,
+  Card,
+  CardGroup,
+} from 'react-bootstrap';
+import './login-view.scss';
 
 export function LoginView(props) {
   const [username, setUserName] = useState('');
@@ -14,29 +24,55 @@ export function LoginView(props) {
   };
 
   return (
-    <form>
-      <div>Login Here</div>
-      <br />
-      <label>
-        UserName:
-        <input
-          type='text'
-          value={username}
-          onChange={(e) => setUserName(e.target.value)}
-        />
-      </label>
-      <label>
-        Password:
-        <input
-          type='password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
-      <button type='submit' onClick={handleSubmit}>
-        Submit
-      </button>
-    </form>
+    <div id='login-view'>
+      <div className='d-flex align-items-center' style={{ minHeight: '100vh' }}>
+        <Container>
+          <h1 id='welcome-back'>Welcome Back</h1>
+          <Row>
+            <Col></Col>
+            <Col xs={6}>
+              <CardGroup>
+                <Card>
+                  <Card.Body>
+                    <Card.Title>Login info</Card.Title>
+                    <Form>
+                      <Form.Group className='mb-3' controlId='formUserName'>
+                        <Form.Label>Username:</Form.Label>
+                        <Form.Control
+                          type='text'
+                          onChange={(e) => setUserName(e.target.value)}
+                          required
+                          placeholder='Enter your Username'
+                        />
+                      </Form.Group>
+
+                      <Form.Group className='mb-3' controlId='formPassword'>
+                        <Form.Label>Password:</Form.Label>
+                        <Form.Control
+                          type='text'
+                          onChange={(e) => setPassword(e.target.value)}
+                          required
+                          placeholder='Enter your Password'
+                        />
+                      </Form.Group>
+                      <Button
+                        className='mr-2'
+                        variant='primary'
+                        type='submit'
+                        onClick={handleSubmit}
+                      >
+                        Submit
+                      </Button>
+                    </Form>
+                  </Card.Body>
+                </Card>
+              </CardGroup>
+            </Col>
+            <Col></Col>
+          </Row>
+        </Container>
+      </div>
+    </div>
   );
 }
 LoginView.propTypes = {

@@ -1,59 +1,65 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
+
+import './movie-view.scss';
+import reactDom from 'react-dom';
 
 export class MovieView extends React.Component {
   render() {
     const { movie, onBackClick } = this.props;
     return (
-      <div className='movie-view'>
-        <div className='movie-poster'>
+      <div id='movie-view'>
+        <div className='d-flex justify-content-center'>
           <img
+            id='movie-poster-mv'
             src={movie.ImageUrl}
-            height={400}
-            width={300}
             alt='image'
             crossOrigin='anonymous'
           />
         </div>
         <br />
+        <div id='movie-stats-mv'>
+          <div className='movie-title '>
+            <span id='movie-title-mv'>Title: </span>
 
-        <div className='movie-title'>
-          <span className='label'>Title: </span>
-          <span className='value'>{movie.Title}</span>
+            <span className='value'>{movie.Title}</span>
+          </div>
+          <br />
+
+          <div className='movie-description'>
+            <span id='movie-description-mv'>Description: </span>
+            <span className='value'>{movie.Description} </span>
+          </div>
+          <br />
+
+          <div className=' movie-genre'>
+            <span id='movie-genre-mv'>Genre: </span>
+            <span className='value'>{movie.Genre.Name}</span>
+          </div>
+          <br />
+
+          <div className='movie-director'>
+            <span id='movie-director-mv'>Director: </span>
+            <span className='value'>{movie.Director.Name}</span>
+          </div>
+          <br />
+
+          <div className='released'>
+            <span id='released-mv'>Release Date: </span>
+            <span className='value'>{movie.Released}</span>
+          </div>
         </div>
         <br />
 
-        <div className='movie-description'>
-          <span className='label'>Description: </span>
-          <span className='value'>{movie.Description} </span>
-        </div>
-        <br />
-
-        <div className='movie-genre'>
-          <span className='label'>Genre: </span>
-          <span className='value'>{movie.Genre.Name}</span>
-        </div>
-        <br />
-
-        <div className='movie-director'>
-          <span className='label'>Director: </span>
-          <span className='value'>{movie.Director.Name}</span>
-        </div>
-        <br />
-
-        <div className='movie-released'>
-          <span className='label'>Release Date: </span>
-          <span className='value'>{movie.Released}</span>
-        </div>
-        <br />
-
-        <button
+        <Button
+          id='back-button-mv'
           onClick={() => {
             onBackClick(null);
           }}
         >
           Back
-        </button>
+        </Button>
       </div>
     );
   }

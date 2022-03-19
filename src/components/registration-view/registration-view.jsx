@@ -1,5 +1,17 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import {
+  Button,
+  Form,
+  Card,
+  CardGroup,
+  Container,
+  Row,
+  Col,
+  Navbar,
+  NavbarBrand,
+} from 'react-bootstrap';
+import './registration-view.scss';
 
 export function RegistrationView(props) {
   const [username, setUserName] = useState('');
@@ -16,53 +28,88 @@ export function RegistrationView(props) {
   };
 
   return (
-    <form>
-      <div>Please Register</div>
-      <br />
-      <label>
-        UserName:
-        <input
-          type='text'
-          value={username}
-          onChange={(e) => setUserName(e.target.value)}
-        />
-      </label>
+    <div>
+      <div className='d-flex align-items-center' style={{ minHeight: '100vh' }}>
+        <Container>
+          <h1 id='welcome-heading'>Welcome To Movie Time Mayhem</h1>
+          <Row>
+            <Col></Col>
+            <Col xs={6}>
+              <CardGroup>
+                <Card>
+                  <Card.Body>
+                    <Card.Title>Please Register</Card.Title>
+                    <Form>
+                      <Form.Group className='mb-3'>
+                        <Form.Label>Username:</Form.Label>
+                        <Form.Control
+                          type='text'
+                          value={username}
+                          onChange={(e) => setUserName(e.target.value)}
+                          required
+                          placeholder='Enter a Username'
+                        />
+                      </Form.Group>
 
-      <label>
-        Password:
-        <input
-          type='password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
+                      <Form.Group className='mb-3'>
+                        <Form.Label>Password:</Form.Label>
+                        <Form.Control
+                          type='password'
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          required
+                          minLength='8'
+                          placeholder='Your passsword must be at least 8 characters'
+                        />
+                      </Form.Group>
 
-      <label>
-        Email:
-        <input
-          type='password'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </label>
+                      <Form.Group className='mb-3'>
+                        <Form.Label>Email:</Form.Label>
+                        <Form.Control
+                          type='password'
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          required
+                          placeholder='Enter your e-mail'
+                        />
+                      </Form.Group>
 
-      <label>
-        Birthday:
-        <input
-          type='text'
-          value={birthday}
-          onChange={(e) => setBirthday(e.target.value)}
-        />
-      </label>
+                      <Form.Group className='mb-3'>
+                        <Form.Label>Birthday:</Form.Label>
+                        <Form.Control
+                          type='text'
+                          value={birthday}
+                          onChange={(e) => setBirthday(e.target.value)}
+                          placeholder='MM/DD/YYYY'
+                        />
+                      </Form.Group>
 
-      <button type='submit' onClick={handleSubmit}>
-        Submit
-      </button>
+                      <Button
+                        className='mr-2'
+                        variant='primary'
+                        type='submit'
+                        onClick={handleSubmit}
+                      >
+                        Submit
+                      </Button>
 
-      <button type='submit' onClick={handleSubmit}>
-        Deregister
-      </button>
-    </form>
+                      <Button
+                        variant='secondary'
+                        type='submit'
+                        onClick={handleSubmit}
+                      >
+                        Deregister
+                      </Button>
+                    </Form>
+                  </Card.Body>
+                </Card>
+              </CardGroup>
+            </Col>
+            <Col></Col>
+          </Row>
+        </Container>
+      </div>
+    </div>
   );
 }
 
