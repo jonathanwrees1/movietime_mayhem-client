@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MainView from './components/main-view/main-view';
-import { Container } from 'react-bootstrap';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 
 // Import statement to indicate that you need to bundle `./index.scss`
 import './index.scss';
@@ -10,7 +10,37 @@ import './index.scss';
 class MovietimeMayhemApplication extends React.Component {
   render() {
     return (
-      <Container>
+      <Container fluid className='p-0'>
+        <Navbar
+          collapseOnSelect
+          expand='md'
+          sticky='top'
+          id='navbar'
+          bg='dark'
+          variant='dark'
+        >
+          <Container fluid>
+            <Navbar.Brand href='#home'>
+              <img
+                src='https://cdn.pixabay.com/photo/2013/07/13/13/36/film-161204_1280.png'
+                width='50'
+                height='40'
+                className='d-inline-block align-top'
+                alt='React Bootstrap logo2'
+              />
+            </Navbar.Brand>
+
+            <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+            <Navbar.Collapse id='responsive-navbar-nav'>
+              <Nav className='me-auto'>
+                <Nav.Link href='#home'>HOME</Nav.Link>
+                <Nav.Link href='#contactUs'>CONTACT US</Nav.Link>
+                <Nav.Link href='#moreInfo'>MORE INFO</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+
         <MainView />
       </Container>
     );

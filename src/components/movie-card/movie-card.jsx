@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container, Row, Col, Card, Button, CardGroup } from 'react-bootstrap';
+import { Card, Button, CardGroup, Row, Col, Container } from 'react-bootstrap';
 import './movie-card.scss';
 
 export class MovieCard extends React.Component {
@@ -9,21 +9,38 @@ export class MovieCard extends React.Component {
     const { movie, onMovieClick } = this.props;
 
     return (
-      <Card id='movie-card'>
-        <Card.Header id='card-header'>
-          <Card.Title id='movie-title'>{movie.Title}</Card.Title>
-        </Card.Header>
-        <Card.Img id='movie-image' variant='top' src={movie.ImageUrl} />
+      <Container>
+        <Row>
+          <Col>
+            <CardGroup>
+              <Card id='movie-card'>
+                <Card.Header id='card-header-mc'>
+                  <Card.Title id='movie-title-mc'>{movie.Title}</Card.Title>
+                </Card.Header>
+                <Card.Img
+                  id='movie-image-mc'
+                  variant='top'
+                  src={movie.ImageUrl}
+                />
 
-        <Card.Body>
-          <Card.Text id='movie-description'> {movie.Description}</Card.Text>
-        </Card.Body>
-        <Card.Footer id='card-footer'>
-          <Button onClick={() => onMovieClick(movie)} variant='primary link'>
-            Open
-          </Button>
-        </Card.Footer>
-      </Card>
+                <Card.Body>
+                  <Card.Text id='movie-description-mc'>
+                    {movie.Description}
+                  </Card.Text>
+                </Card.Body>
+                <Card.Footer id='card-footer-mc'>
+                  <Button
+                    onClick={() => onMovieClick(movie)}
+                    variant='primary link'
+                  >
+                    Open
+                  </Button>
+                </Card.Footer>
+              </Card>
+            </CardGroup>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

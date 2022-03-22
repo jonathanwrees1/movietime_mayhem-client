@@ -1,40 +1,50 @@
-#background-color1 {
-  background-color: #EFD9C7;
-}
-#card-header {
-  background-color: #e5e9eb;
-  height: 100px;
+#app-container {
+  background-color: #efd9c7;
 }
 
-#card-footer {
-  background-color: #e5e9eb;
+#navbar {
+  margin-bottom: 12px;
 }
 
-#movie-image {
-  max-width: 100%;
-  height: 300px;
+.me-auto {
+  font-family: inherit;
 }
-
-#movie-title {
-  height: 100%;
-  font-size: 20px;
-  text-align: center;
-}
-
 #movie-card {
-  width: 100%;
   height: 600px;
   margin-top: 12px;
   margin-bottom: 12px;
 }
 
-#movie-description {
+#card-header-mc {
+  height: 100px;
+  background-color: #e5e9eb;
+}
+
+#card-footer-mc {
+  background-color: #e5e9eb;
+}
+
+#movie-image-mc {
+  max-width: 100%;
+  height: 300px;
+}
+
+#movie-title-mc {
   width: 100%;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  font-size: 16px;
+  font-size: 20px;
+  text-align: center;
+}
+
+#movie-description-mc {
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 #movie-view {
   background-color: #e5e9eb;
@@ -44,15 +54,15 @@
 }
 
 #movie-poster-mv {
-  margin-top: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
   border-radius: 1%;
-  height: 400px;
-  width: 300px;
+  height: 800px;
 }
 
-#movie-stats-mv {
-  margin-left: 20px;
-  margin-right: 20px;
+#movie-image-mv {
+  width: 100%;
+  height: 100%;
 }
 
 #movie-title-mv {
@@ -84,17 +94,11 @@
   font-weight: bold;
   margin-right: 20px;
 }
-
-#back-button-mv {
-  margin-left: 20px;
-  margin-bottom: 20px;
-}
 #welcome-back {
   text-align: center;
   margin-bottom: 30px;
 }
 #welcome-heading {
   text-align: center;
-  margin-bottom: 30px;
 }
 /*# sourceMappingURL=index.ce1d6491.css.map */

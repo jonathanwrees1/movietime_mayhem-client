@@ -1,66 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
+import reactDom from 'react-dom';
+import { Button, Card, Container, Row, Col } from 'react-bootstrap';
 
 import './movie-view.scss';
-import reactDom from 'react-dom';
 
 export class MovieView extends React.Component {
   render() {
     const { movie, onBackClick } = this.props;
     return (
-      <div id='movie-view'>
-        <div className='d-flex justify-content-center'>
-          <img
-            id='movie-poster-mv'
-            src={movie.ImageUrl}
-            alt='image'
-            crossOrigin='anonymous'
-          />
-        </div>
-        <br />
-        <div id='movie-stats-mv'>
-          <div className='movie-title '>
-            <span id='movie-title-mv'>Title: </span>
+      <Container>
+        <Row>
+          <Col>
+            <Card id='movie-view'>
+              <Card.Body>
+                <Container id='movie-poster-mv'>
+                  <Card.Img
+                    id='movie-image-mv'
+                    src={movie.ImageUrl}
+                    alt='image'
+                    crossOrigin='anonymous'
+                  />
+                </Container>
 
-            <span className='value'>{movie.Title}</span>
-          </div>
-          <br />
+                <Card.Title id='movie-title-mv'>Title: </Card.Title>
 
-          <div className='movie-description'>
-            <span id='movie-description-mv'>Description: </span>
-            <span className='value'>{movie.Description} </span>
-          </div>
-          <br />
+                <Card.Text className='value'>{movie.Title}</Card.Text>
 
-          <div className=' movie-genre'>
-            <span id='movie-genre-mv'>Genre: </span>
-            <span className='value'>{movie.Genre.Name}</span>
-          </div>
-          <br />
+                <Card.Title id='movie-description-mv'>Description: </Card.Title>
+                <Card.Text className='value'>{movie.Description} </Card.Text>
 
-          <div className='movie-director'>
-            <span id='movie-director-mv'>Director: </span>
-            <span className='value'>{movie.Director.Name}</span>
-          </div>
-          <br />
+                <Card.Title id='movie-genre-mv'>Genre: </Card.Title>
+                <Card.Text className='value'>{movie.Genre.Name}</Card.Text>
 
-          <div className='released'>
-            <span id='released-mv'>Release Date: </span>
-            <span className='value'>{movie.Released}</span>
-          </div>
-        </div>
-        <br />
+                <Card.Title id='movie-director-mv'>Director: </Card.Title>
+                <Card.Text className='value'>{movie.Director.Name}</Card.Text>
 
-        <Button
-          id='back-button-mv'
-          onClick={() => {
-            onBackClick(null);
-          }}
-        >
-          Back
-        </Button>
-      </div>
+                <Card.Title id='released-mv'>Release Date: </Card.Title>
+                <Card.Text className='value'>{movie.Released}</Card.Text>
+                <Button
+                  onClick={() => {
+                    onBackClick(null);
+                  }}
+                >
+                  Back
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

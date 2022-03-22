@@ -1,3 +1,14 @@
-#background-color1{
-  background-color:#EFD9C7;
+$backgroundColor: #efd9c7;
+$font: inherit;
+
+#app-container {
+  background-color: $backgroundColor;
+}
+
+#navbar {
+  margin-bottom: 12px;
+}
+
+.me-auto {
+  font-family: $font;
 }
