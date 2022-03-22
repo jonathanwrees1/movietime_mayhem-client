@@ -22235,6 +22235,7 @@ class MainView extends _reactDefault.default.Component {
                 this.setSelectedMovie(newSelectedMovie);
             }
         })) : movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
+                key: movie._id,
                 md: 3
             }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCard.MovieCard, {
                 key: movie._id,
@@ -22284,8 +22285,12 @@ class MovieCard extends _reactDefault.default.Component {
         }, movie.Title)), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Img, {
             id: "movie-image-mc",
             variant: "top",
-            src: movie.ImageUrl
-        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+            src: movie.ImageUrl,
+            alt: "image",
+            crossOrigin: "anonymous"
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Body, {
+            id: "card-body-mc"
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
             id: "movie-description-mc"
         }, movie.Description)), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Footer, {
             id: "card-footer-mc"
@@ -28849,8 +28854,6 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _reactDom = require("react-dom");
-var _reactDomDefault = parcelHelpers.interopDefault(_reactDom);
 var _reactBootstrap = require("react-bootstrap");
 var _movieViewScss = require("./movie-view.scss");
 class MovieView extends _reactDefault.default.Component {
@@ -28858,7 +28861,9 @@ class MovieView extends _reactDefault.default.Component {
         const { movie , onBackClick  } = this.props;
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, null, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card, {
             id: "movie-view"
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, {
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Body, {
+            id: "card-body-mv"
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, {
             id: "movie-poster-mv"
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Img, {
             id: "movie-image-mv",
@@ -28913,7 +28918,7 @@ MovieView.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"9q0ob","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"hoveJ","prop-types":"7wKI2","react-bootstrap":"3AD9A","./movie-view.scss":"jnlR5","react-dom":"j6uA9"}],"jnlR5":[function() {},{}],"jo6P5":[function(require,module,exports) {
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"9q0ob","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"hoveJ","prop-types":"7wKI2","react-bootstrap":"3AD9A","./movie-view.scss":"jnlR5"}],"jnlR5":[function() {},{}],"jo6P5":[function(require,module,exports) {
 module.exports = require('./lib/axios');
 
 },{"./lib/axios":"63MyY"}],"63MyY":[function(require,module,exports) {

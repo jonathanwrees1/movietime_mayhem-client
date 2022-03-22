@@ -21,9 +21,11 @@ export class MovieCard extends React.Component {
                   id='movie-image-mc'
                   variant='top'
                   src={movie.ImageUrl}
+                  alt='image'
+                  crossOrigin='anonymous'
                 />
 
-                <Card.Body>
+                <Card.Body id='card-body-mc'>
                   <Card.Text id='movie-description-mc'>
                     {movie.Description}
                   </Card.Text>
