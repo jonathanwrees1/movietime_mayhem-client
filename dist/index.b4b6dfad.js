@@ -1033,7 +1033,8 @@ class MovietimeMayhemApplication extends _reactDefault.default.Component {
             width: "50",
             height: "40",
             className: "d-inline-block align-top",
-            alt: "React Bootstrap logo2"
+            alt: "React Bootstrap logo2",
+            crossOrigin: "anonymous"
         })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Navbar.Toggle, {
             "aria-controls": "responsive-navbar-nav"
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Navbar.Collapse, {
@@ -22236,7 +22237,8 @@ class MainView extends _reactDefault.default.Component {
             }
         })) : movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
                 key: movie._id,
-                md: 3
+                lg: 3,
+                md: 'auto'
             }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCard.MovieCard, {
                 key: movie._id,
                 movie: movie,

@@ -27,6 +27,7 @@ class MovietimeMayhemApplication extends React.Component {
                 height='40'
                 className='d-inline-block align-top'
                 alt='React Bootstrap logo2'
+                crossOrigin='anonymous'
               />
             </Navbar.Brand>
 
