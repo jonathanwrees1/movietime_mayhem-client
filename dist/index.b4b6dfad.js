@@ -22199,6 +22199,19 @@ class MainView extends _reactDefault.default.Component {
             console.log(error);
         });
     }
+    getMovies(token) {
+        _axiosDefault.default.get('https://movie-time-mayhem.herokuapp.com/movies', {
+            headers: {
+                Authorization: `Bearer${token}`
+            }
+        }).then((response)=>{
+            this.setState({
+                movies: response.data
+            });
+        }).catch(function(error) {
+            console.log(error);
+        });
+    }
     setSelectedMovie(newSelectedMovie) {
         this.setState({
             selectedMovie: newSelectedMovie
@@ -22209,10 +22222,14 @@ class MainView extends _reactDefault.default.Component {
             newUser
         });
     }
-    onLoggedIn(user) {
+    onLoggedIn(authData) {
+        console.log(authData);
         this.setState({
-            user
+            user: authData.user.Username
         });
+        localStorage.setItem('token', authData.token);
+        localStorage.setItem('user', authData.user.UserName);
+        this.getMovies(authData.token);
     }
     render() {
         const { movies , selectedMovie , user: user1 , newUser: newUser1  } = this.state;
@@ -30499,6 +30516,8 @@ var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _reactBootstrap = require("react-bootstrap");
 var _loginViewScss = require("./login-view.scss");
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _s = $RefreshSig$();
 function LoginView(props) {
     _s();
@@ -30506,8 +30525,15 @@ function LoginView(props) {
     const [password, setPassword] = _react.useState('');
     const handleSubmit = (e)=>{
         e.preventDefault();
-        console.log(username, password);
-        /* Send a request to the server for authentication */ /* then call props.onLoggedIn(username) */ props.onLoggedIn(username);
+        /* Send a request to the server for authentication */ _axiosDefault.default.post('https://movie-time-mayhem.herokuapp.com/Login', {
+            UserName: username,
+            Password: password
+        }).then((response)=>{
+            const data = response.data;
+            props.onLoggedIn(data);
+        }).catch((e)=>{
+            console.log('no such user');
+        });
     };
     return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
         className: "login-view d-flex align-items-center",
@@ -30523,6 +30549,7 @@ function LoginView(props) {
         controlId: "formUserName"
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, null, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
         type: "text",
+        value: username,
         onChange: (e)=>setUserName(e.target.value)
         ,
         required: true,
@@ -30532,6 +30559,7 @@ function LoginView(props) {
         controlId: "formPassword"
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, null, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
         type: "text",
+        value: password,
         onChange: (e)=>setPassword(e.target.value)
         ,
         required: true,
@@ -30556,7 +30584,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"9q0ob","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"hoveJ","prop-types":"7wKI2","react-bootstrap":"3AD9A","./login-view.scss":"e57ax"}],"e57ax":[function() {},{}],"3U8r7":[function(require,module,exports) {
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"9q0ob","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"hoveJ","prop-types":"7wKI2","react-bootstrap":"3AD9A","./login-view.scss":"e57ax","axios":"jo6P5"}],"e57ax":[function() {},{}],"3U8r7":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$789c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
