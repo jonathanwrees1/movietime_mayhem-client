@@ -1,18 +1,18 @@
-import React from 'react';
+/*import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Button, Card, Container, Row, Col } from 'react-bootstrap';
 
-import './movie-view.scss';
+import './director-view.scss';
 
-export class MovieView extends React.Component {
+export class DirectorView extends React.Component {
   render() {
-    const { movie, onBackClick } = this.props;
+    const { director, onBackClick, movies } = this.props;
     return (
       <Container>
         <Row>
           <Col>
-            <Card id='movie-view'>
+            <Card id='director-view'>
               <Card.Body id='card-body-mv'>
                 <Container id='movie-poster-mv'>
                   <Card.Img
@@ -70,3 +70,4 @@ MovieView.propTypes = {
 
   onBackClick: PropTypes.func.isRequired,
 };
+*/
