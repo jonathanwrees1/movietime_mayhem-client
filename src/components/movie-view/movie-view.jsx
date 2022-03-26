@@ -1,5 +1,7 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
+
 import { Link } from 'react-router-dom';
 import { Button, Card, Container, Row, Col } from 'react-bootstrap';
 
@@ -8,6 +10,7 @@ import './movie-view.scss';
 export class MovieView extends React.Component {
   render() {
     const { movie, onBackClick } = this.props;
+
     return (
       <Container>
         <Row>
@@ -55,7 +58,7 @@ export class MovieView extends React.Component {
 }
 
 MovieView.propTypes = {
-  Movie: PropTypes.shape({
+  movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
     ImageUrl: PropTypes.string.isRequired,

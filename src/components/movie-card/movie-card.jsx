@@ -6,7 +6,7 @@ import './movie-card.scss';
 
 export class MovieCard extends React.Component {
   render() {
-    const { movie, onMovieClick } = this.props;
+    const { movie } = this.props;
 
     return (
       <Container>
@@ -31,12 +31,9 @@ export class MovieCard extends React.Component {
                   </Card.Text>
                 </Card.Body>
                 <Card.Footer id='card-footer-mc'>
-                  <Button
-                    onClick={() => onMovieClick(movie)}
-                    variant='primary link'
-                  >
-                    Open
-                  </Button>
+                  <Link to={`/movies/${movie._id}`}>
+                    <Button variant='primary'>Open</Button>
+                  </Link>
                 </Card.Footer>
               </Card>
             </CardGroup>
@@ -50,7 +47,5 @@ export class MovieCard extends React.Component {
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
-  }).isRequired,
-
-  onMovieClick: PropTypes.func.isRequired,
+  }),
 };
