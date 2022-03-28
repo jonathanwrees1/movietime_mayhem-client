@@ -22249,18 +22249,15 @@ class MainView extends _reactDefault.default.Component {
                 })));
             }
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
-            path: "/directors/:name",
+            path: "/director/:Name",
             render: ({ match , history  })=>{
-                if (!user1) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/ _reactDefault.default.createElement(_loginView.LoginView, {
-                    onLoggedIn: (user)=>this.onLoggedIn(user)
-                })));
                 if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
                     className: "main-view"
                 }));
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_directorView.DirectorView, {
-                    director: movies.find((m)=>m.Director.Name === match.params.name
+                    director: movies.find((m)=>m.Director.Name === match.params.Name
                     ).Director,
                     onBackClick: ()=>history.goBack()
                 })));
@@ -31243,13 +31240,17 @@ class MovieView extends _reactDefault.default.Component {
             id: "movie-director-mv"
         }, "Director: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
             className: "value"
-        }, movie.Director.Name), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
+        }, movie.Director.Name), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+            to: `/director/:Name${movie.Director.Name}`
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+            variant: "link"
+        }, movie.Director.Name)), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
             id: "released-mv"
         }, "Release Date: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
             className: "value"
         }, movie.Released), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
             onClick: ()=>{
-                onBackClick(null);
+                onBackClick();
             }
         }, "Back")))))));
     }
@@ -33165,8 +33166,71 @@ $RefreshReg$(_c, "Menubar");
 },{"react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"9q0ob","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"hoveJ","react-router-dom":"cHIiW","./navbar.scss":"8wkoA"}],"8wkoA":[function() {},{}],"4tuA0":[function(require,module,exports) {
 
 },{}],"9tpci":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$ad4a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$ad4a.prelude(module);
 
-},{}],"2vVqf":[function(require,module,exports) {
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "DirectorView", ()=>DirectorView
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _reactRouterDom = require("react-router-dom");
+var _reactBootstrap = require("react-bootstrap");
+var _directorViewScss = require("./director-view.scss");
+class DirectorView extends _reactDefault.default.Component {
+    render() {
+        const { director , onBackClick , movies  } = this.props;
+        return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, {
+            id: "director-view-dv"
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card, {
+            id: "director-view"
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Body, {
+            id: "card-body-dv"
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
+            id: "director-dv"
+        }, "Director: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+            className: "value"
+        }, director.Name), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
+            id: "bio-dv"
+        }, "Bio: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+            className: "value"
+        }, director.Bio), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
+            id: "birth-year-dv"
+        }, "Birth Year: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+            className: "value"
+        }, director.BirthYear), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
+            id: "death-year-dv"
+        }, "Death Year: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+            className: "value"
+        }, director.DeathYear), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+            onClick: ()=>{
+                onBackClick(null);
+            }
+        }, "Back")))));
+    }
+}
+DirectorView.propTypes = {
+    director: _propTypesDefault.default.shape({
+        Name: _propTypesDefault.default.string.isRequired,
+        Bio: _propTypesDefault.default.string.isRequired,
+        BirthYear: _propTypesDefault.default.string.isRequired,
+        DeathYear: _propTypesDefault.default.string.isRequired
+    }).isRequired,
+    onBackClick: _propTypesDefault.default.func.isRequired
+};
+
+  $parcel$ReactRefreshHelpers$ad4a.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"21dqq","prop-types":"7wKI2","react-router-dom":"cHIiW","react-bootstrap":"3AD9A","./director-view.scss":"cVy0f","@parcel/transformer-js/src/esmodule-helpers.js":"9q0ob","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"hoveJ"}],"cVy0f":[function() {},{}],"2vVqf":[function(require,module,exports) {
 
 },{}],"eBaMl":[function() {},{}]},["i9zCZ","kVrQt","d8Dch"], "d8Dch", "parcelRequirea0b8")
 

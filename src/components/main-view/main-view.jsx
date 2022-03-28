@@ -130,20 +130,14 @@ export class MainView extends React.Component {
           />
 
           <Route
-            path='/directors/:name'
+            path='/director/:Name'
             render={({ match, history }) => {
-              if (!user)
-                return (
-                  <Col>
-                    <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
-                  </Col>
-                );
               if (movies.length === 0) return <div className='main-view' />;
               return (
                 <Col md={8}>
                   <DirectorView
                     director={
-                      movies.find((m) => m.Director.Name === match.params.name)
+                      movies.find((m) => m.Director.Name === match.params.Name)
                         .Director
                     }
                     onBackClick={() => history.goBack()}
