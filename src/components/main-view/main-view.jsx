@@ -16,7 +16,7 @@ import { GenreView } from '../genre-view/genre-view';
 import { DirectorView } from '../director-view/director-view';
 import { ProfileView } from '../profile-view/profile-view';
 
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import './main-view.scss';
 
 export class MainView extends React.Component {
@@ -78,7 +78,9 @@ export class MainView extends React.Component {
       <Router>
         <Menubar />
         <div className='d-flex justify-content-center'>
-          <Link to={`/users/${user}`}>{user}</Link>
+          <Link to={`/users/${user}`}>
+            <Button>My Profile</Button>
+          </Link>
         </div>
 
         <Row className='main-view justify-content-md-center'>

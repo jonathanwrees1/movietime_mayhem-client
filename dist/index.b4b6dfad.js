@@ -22207,7 +22207,7 @@ class MainView extends _reactDefault.default.Component {
             className: "d-flex justify-content-center"
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
             to: `/users/${user1}`
-        }, user1)), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, null, "My Profile"))), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
             className: "main-view justify-content-md-center"
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
             exact: true,
@@ -32868,7 +32868,7 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _propTypes = require("prop-types"); //validating correct types of data are put in
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _reactBootstrap = require("react-bootstrap"); //bootstrap styling imports
-var _loginViewScss = require("./login-view.scss"); //custom scss styiling imported
+var _loginViewScss = require("./login-view.scss"); //custom scss styling imported
 var _axios = require("axios"); //importing axios which links to external api
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _s = $RefreshSig$();
@@ -33551,9 +33551,56 @@ var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _reactRouterDom = require("react-router-dom");
 var _reactBootstrap = require("react-bootstrap");
 var _profileViewScss = require("./profile-view.scss");
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
+function _defineProperty(obj, key, value) {
+    if (key in obj) Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+    });
+    else obj[key] = value;
+    return obj;
+}
 class ProfileView extends _reactDefault.default.Component {
+    constructor(){
+        super();
+        _defineProperty(this, "getUserInfo", (token)=>{
+            const UserName = localStorage.getItem('user');
+            _axiosDefault.default.get(`https://movie-time-mayhem.herokuapp.com/users/${UserName}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }).then((response)=>{
+                this.setState({
+                    UserName: response.data.UserName,
+                    Password: response.data.Password,
+                    Email: response.data.Email,
+                    Birthday: response.data.Birthday
+                });
+            }).catch(function(error) {
+                console.log(error);
+            });
+        });
+        this.state = {
+            UserName: null,
+            Password: null,
+            Email: null,
+            Birthday: null
+        };
+    }
+    componentDidMount() {
+        let accessToken = localStorage.getItem('token');
+        if (accessToken !== null) {
+            this.setState({
+                user: localStorage.getItem('user')
+            });
+            this.getUserInfo(accessToken);
+        }
+    }
     render() {
-        const { user , onBackClick , movies  } = this.props;
+        const { movies , user , onBackClick  } = this.props;
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, {
             id: "profile-view-pv",
             className: "d-flex align-items-center"
@@ -33563,9 +33610,9 @@ class ProfileView extends _reactDefault.default.Component {
             id: "card-body-pv"
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
             id: "username-pv"
-        }, "Username: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+        }, "User: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
             className: "value"
-        }, user), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
+        }, user.UserName), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
             id: "bio-dv"
         }, "Password: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
             className: "value"
@@ -33590,6 +33637,6 @@ class ProfileView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","prop-types":"7wKI2","react-router-dom":"cHIiW","react-bootstrap":"3AD9A","./profile-view.scss":"eyKYH","@parcel/transformer-js/src/esmodule-helpers.js":"9q0ob","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"hoveJ"}],"eyKYH":[function() {},{}],"eBaMl":[function() {},{}]},["i9zCZ","kVrQt","d8Dch"], "d8Dch", "parcelRequirea0b8")
+},{"react":"21dqq","prop-types":"7wKI2","react-router-dom":"cHIiW","react-bootstrap":"3AD9A","./profile-view.scss":"eyKYH","@parcel/transformer-js/src/esmodule-helpers.js":"9q0ob","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"hoveJ","axios":"jo6P5"}],"eyKYH":[function() {},{}],"eBaMl":[function() {},{}]},["i9zCZ","kVrQt","d8Dch"], "d8Dch", "parcelRequirea0b8")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

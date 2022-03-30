@@ -11,7 +11,7 @@ import {
   CardGroup,
 } from 'react-bootstrap'; //bootstrap styling imports
 
-import './login-view.scss'; //custom scss styiling imported
+import './login-view.scss'; //custom scss styling imported
 import axios from 'axios'; //importing axios which links to external api
 
 export function LoginView(props) {
