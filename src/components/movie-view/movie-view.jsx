@@ -34,12 +34,25 @@ export class MovieView extends React.Component {
                 <Card.Text className='value'>{movie.Description} </Card.Text>
 
                 <Card.Title id='movie-genre-mv'>Genre: </Card.Title>
-                <Card.Text className='value'>{movie.Genre.Name}</Card.Text>
+                <Card.Text id='movie-genre-text-mv' className='value'>
+                  {movie.Genre.Name}
+                </Card.Text>
+
+                <Link to={`/genres/${movie.Genre.Name}`}>
+                  <Button id='genre-info-mv' variant='link'>
+                    More on Genre: {movie.Genre.Name}
+                  </Button>
+                </Link>
 
                 <Card.Title id='movie-director-mv'>Director: </Card.Title>
-                <Card.Text className='value'>{movie.Director.Name}</Card.Text>
-                <Link to={`/director/:Name${movie.Director.Name}`}>
-                  <Button variant='link'>{movie.Director.Name}</Button>
+                <Card.Text id='movie-director-text-mv' className='value'>
+                  {movie.Director.Name}
+                </Card.Text>
+
+                <Link to={`/director/${movie.Director.Name}`}>
+                  <Button id='director-info-mv' variant='link'>
+                    More on Director: {movie.Director.Name}
+                  </Button>
                 </Link>
 
                 <Card.Title id='released-mv'>Release Date: </Card.Title>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+import { useIsRTL } from 'react-bootstrap/esm/ThemeProvider';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 import './navbar.scss';
 
@@ -43,6 +45,7 @@ export function Menubar({ user }) {
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+
         <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='ml-auto'>
             {isAuth() && <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>}

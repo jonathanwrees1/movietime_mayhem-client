@@ -1,4 +1,4 @@
-$secondaryColor: #e5e9eb;
+$secondaryColor: #d5d7d8;
 
 #movie-view {
   background-color: $secondaryColor;
@@ -41,10 +41,31 @@ $secondaryColor: #e5e9eb;
   font-size: 20px;
   font-weight: bold;
   margin-right: 20px;
+  margin-top: 12px;
 }
 
 #released-mv {
   font-size: 20px;
   font-weight: bold;
   margin-right: 20px;
+}
+#director-info-mv {
+  padding: 0 0;
+  font-style: italic;
+  font-size: 14px;
+}
+#movie-director-text-mv {
+  margin-bottom: 0;
+}
+#released-mv {
+  margin-top: 12px;
+}
+#movie-genre-text-mv {
+  margin-bottom: 0;
+}
+
+#genre-info-mv {
+  padding: 0 0;
+  font-style: italic;
+  font-size: 14px;
 }

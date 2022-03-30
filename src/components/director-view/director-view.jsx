@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
 import { Button, Card, Container, Row, Col } from 'react-bootstrap';
 
 import './director-view.scss';
@@ -8,8 +9,9 @@ import './director-view.scss';
 export class DirectorView extends React.Component {
   render() {
     const { director, onBackClick, movies } = this.props;
+
     return (
-      <Container id='director-view-dv'>
+      <Container id='director-view-dv' className='d-flex align-items-center'>
         <Card id='director-view'>
           <Card.Body id='card-body-dv'>
             <Card.Title id='director-dv'>Director: </Card.Title>

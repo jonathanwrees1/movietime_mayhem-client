@@ -47,7 +47,7 @@
   overflow: hidden;
 }
 #movie-view {
-  background-color: #e5e9eb;
+  background-color: #d5d7d8;
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 1%;
@@ -87,12 +87,37 @@
   font-size: 20px;
   font-weight: bold;
   margin-right: 20px;
+  margin-top: 12px;
 }
 
 #released-mv {
   font-size: 20px;
   font-weight: bold;
   margin-right: 20px;
+}
+
+#director-info-mv {
+  padding: 0 0;
+  font-style: italic;
+  font-size: 14px;
+}
+
+#movie-director-text-mv {
+  margin-bottom: 0;
+}
+
+#released-mv {
+  margin-top: 12px;
+}
+
+#movie-genre-text-mv {
+  margin-bottom: 0;
+}
+
+#genre-info-mv {
+  padding: 0 0;
+  font-style: italic;
+  font-size: 14px;
 }
 #welcome-back {
   text-align: center;
@@ -102,6 +127,22 @@
   text-align: center;
 }
 
+#genre-view {
+  background-color: #d5d7d8;
+  border-radius: 1%;
+}
+
+#genre-view-gv {
+  height: 100vh;
+}
+#director-view {
+  background-color: #d5d7d8;
+  border-radius: 1%;
+}
+
+#director-view-dv {
+  height: 100vh;
+}
 
 
 /*# sourceMappingURL=index.ce1d6491.css.map */

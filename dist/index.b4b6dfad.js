@@ -22203,7 +22203,11 @@ class MainView extends _reactDefault.default.Component {
     }
     render() {
         const { movies , user: user1  } = this.state;
-        return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/ _reactDefault.default.createElement(_navbar.Menubar, null), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
+        return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/ _reactDefault.default.createElement(_navbar.Menubar, null), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "d-flex justify-content-center"
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+            to: `/users/${user1}`
+        }, user1)), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
             className: "main-view justify-content-md-center"
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
             exact: true,
@@ -31235,16 +31239,24 @@ class MovieView extends _reactDefault.default.Component {
         }, movie.Description, " "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
             id: "movie-genre-mv"
         }, "Genre: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+            id: "movie-genre-text-mv",
             className: "value"
-        }, movie.Genre.Name), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
+        }, movie.Genre.Name), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+            to: `/genres/${movie.Genre.Name}`
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+            id: "genre-info-mv",
+            variant: "link"
+        }, "More on Genre: ", movie.Genre.Name)), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
             id: "movie-director-mv"
         }, "Director: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+            id: "movie-director-text-mv",
             className: "value"
         }, movie.Director.Name), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
-            to: `/director/:Name${movie.Director.Name}`
+            to: `/director/${movie.Director.Name}`
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+            id: "director-info-mv",
             variant: "link"
-        }, movie.Director.Name)), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
+        }, "More on Director: ", movie.Director.Name)), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
             id: "released-mv"
         }, "Release Date: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
             className: "value"
@@ -33106,7 +33118,9 @@ parcelHelpers.export(exports, "Menubar", ()=>Menubar
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactBootstrap = require("react-bootstrap");
+var _themeProvider = require("react-bootstrap/esm/ThemeProvider");
 var _reactRouterDom = require("react-router-dom");
+var _reactRouterDomMin = require("react-router-dom/cjs/react-router-dom.min");
 var _navbarScss = require("./navbar.scss");
 function Menubar({ user  }) {
     const onLoggedOut = ()=>{
@@ -33163,9 +33177,288 @@ $RefreshReg$(_c, "Menubar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"9q0ob","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"hoveJ","react-router-dom":"cHIiW","./navbar.scss":"8wkoA"}],"8wkoA":[function() {},{}],"4tuA0":[function(require,module,exports) {
+},{"react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"9q0ob","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"hoveJ","react-router-dom":"cHIiW","./navbar.scss":"8wkoA","react-router-dom/cjs/react-router-dom.min":"4Y83O","react-bootstrap/esm/ThemeProvider":"dVixI"}],"8wkoA":[function() {},{}],"4Y83O":[function(require,module,exports) {
+"use strict";
+function _interopDefault(e) {
+    return e && "object" == typeof e && "default" in e ? e.default : e;
+}
+Object.defineProperty(exports, "__esModule", {
+    value: !0
+});
+var reactRouter = require("react-router"), React = _interopDefault(require("react")), history = require("history");
+require("prop-types"), require("tiny-warning");
+var invariant = _interopDefault(require("tiny-invariant"));
+function _extends() {
+    return (_extends = Object.assign || function(e) {
+        for(var t = 1; t < arguments.length; t++){
+            var r = arguments[t];
+            for(var o in r)Object.prototype.hasOwnProperty.call(r, o) && (e[o] = r[o]);
+        }
+        return e;
+    }).apply(this, arguments);
+}
+function _inheritsLoose(e, t) {
+    e.prototype = Object.create(t.prototype), _setPrototypeOf(e.prototype.constructor = e, t);
+}
+function _setPrototypeOf(e1, t1) {
+    return (_setPrototypeOf = Object.setPrototypeOf || function(e, t) {
+        return e.__proto__ = t, e;
+    })(e1, t1);
+}
+function _objectWithoutPropertiesLoose(e, t) {
+    if (null == e) return {
+    };
+    var r, o, n = {
+    }, a = Object.keys(e);
+    for(o = 0; o < a.length; o++)r = a[o], 0 <= t.indexOf(r) || (n[r] = e[r]);
+    return n;
+}
+var BrowserRouter = function(n) {
+    function e2() {
+        for(var e, t = arguments.length, r = new Array(t), o = 0; o < t; o++)r[o] = arguments[o];
+        return (e = n.call.apply(n, [
+            this
+        ].concat(r)) || this).history = history.createBrowserHistory(e.props), e;
+    }
+    return _inheritsLoose(e2, n), e2.prototype.render = function() {
+        return React.createElement(reactRouter.Router, {
+            history: this.history,
+            children: this.props.children
+        });
+    }, e2;
+}(React.Component), HashRouter = function(n) {
+    function e3() {
+        for(var e, t = arguments.length, r = new Array(t), o = 0; o < t; o++)r[o] = arguments[o];
+        return (e = n.call.apply(n, [
+            this
+        ].concat(r)) || this).history = history.createHashHistory(e.props), e;
+    }
+    return _inheritsLoose(e3, n), e3.prototype.render = function() {
+        return React.createElement(reactRouter.Router, {
+            history: this.history,
+            children: this.props.children
+        });
+    }, e3;
+}(React.Component), resolveToLocation = function(e, t) {
+    return "function" == typeof e ? e(t) : e;
+}, normalizeToLocation = function(e, t) {
+    return "string" == typeof e ? history.createLocation(e, null, null, t) : e;
+}, forwardRefShim = function(e) {
+    return e;
+}, forwardRef = React.forwardRef;
+function isModifiedEvent(e) {
+    return !!(e.metaKey || e.altKey || e.ctrlKey || e.shiftKey);
+}
+void 0 === forwardRef && (forwardRef = forwardRefShim);
+var LinkAnchor = forwardRef(function(e4, t2) {
+    var r = e4.innerRef, o = e4.navigate, n = e4.onClick, a = _objectWithoutPropertiesLoose(e4, [
+        "innerRef",
+        "navigate",
+        "onClick"
+    ]), i = a.target, c = _extends({
+    }, a, {
+        onClick: function(t) {
+            try {
+                n && n(t);
+            } catch (e) {
+                throw t.preventDefault(), e;
+            }
+            t.defaultPrevented || 0 !== t.button || i && "_self" !== i || isModifiedEvent(t) || (t.preventDefault(), o());
+        }
+    });
+    return c.ref = forwardRefShim !== forwardRef && t2 || r, React.createElement("a", c);
+}), Link = forwardRef(function(e5, a) {
+    var t3 = e5.component, i = void 0 === t3 ? LinkAnchor : t3, c = e5.replace, u = e5.to, f = e5.innerRef, s = _objectWithoutPropertiesLoose(e5, [
+        "component",
+        "replace",
+        "to",
+        "innerRef"
+    ]);
+    return React.createElement(reactRouter.__RouterContext.Consumer, null, function(r) {
+        r || invariant(!1);
+        var o = r.history, e6 = normalizeToLocation(resolveToLocation(u, r.location), r.location), t4 = e6 ? o.createHref(e6) : "", n = _extends({
+        }, s, {
+            href: t4,
+            navigate: function() {
+                var e = resolveToLocation(u, r.location), t = history.createPath(r.location) === history.createPath(normalizeToLocation(e));
+                (c || t ? o.replace : o.push)(e);
+            }
+        });
+        return forwardRefShim !== forwardRef ? n.ref = a || f : n.innerRef = f, React.createElement(i, n);
+    });
+}), forwardRefShim$1 = function(e) {
+    return e;
+}, forwardRef$1 = React.forwardRef;
+function joinClassnames() {
+    for(var e7 = arguments.length, t = new Array(e7), r = 0; r < e7; r++)t[r] = arguments[r];
+    return t.filter(function(e) {
+        return e;
+    }).join(" ");
+}
+void 0 === forwardRef$1 && (forwardRef$1 = forwardRefShim$1);
+var NavLink = forwardRef$1(function(e8, s) {
+    var t5 = e8["aria-current"], l = void 0 === t5 ? "page" : t5, r1 = e8.activeClassName, p = void 0 === r1 ? "active" : r1, R = e8.activeStyle, h = e8.className, y = e8.exact, d = e8.isActive, m = e8.location, v = e8.sensitive, b = e8.strict, P = e8.style, w = e8.to, x = e8.innerRef, g = _objectWithoutPropertiesLoose(e8, [
+        "aria-current",
+        "activeClassName",
+        "activeStyle",
+        "className",
+        "exact",
+        "isActive",
+        "location",
+        "sensitive",
+        "strict",
+        "style",
+        "to",
+        "innerRef"
+    ]);
+    return React.createElement(reactRouter.__RouterContext.Consumer, null, function(e) {
+        e || invariant(!1);
+        var t = m || e.location, r = normalizeToLocation(resolveToLocation(w, t), t), o = r.pathname, n = o && o.replace(/([.+*?=^!:${}()[\]|/\\])/g, "\\$1"), a = n ? reactRouter.matchPath(t.pathname, {
+            path: n,
+            exact: y,
+            sensitive: v,
+            strict: b
+        }) : null, i = !!(d ? d(a, t) : a), c = "function" == typeof h ? h(i) : h, u = "function" == typeof P ? P(i) : P;
+        i && (c = joinClassnames(c, p), u = _extends({
+        }, u, R));
+        var f = _extends({
+            "aria-current": i && l || null,
+            className: c,
+            style: u,
+            to: r
+        }, g);
+        return forwardRefShim$1 !== forwardRef$1 ? f.ref = s || x : f.innerRef = x, React.createElement(Link, f);
+    });
+});
+Object.defineProperty(exports, "MemoryRouter", {
+    enumerable: !0,
+    get: function() {
+        return reactRouter.MemoryRouter;
+    }
+}), Object.defineProperty(exports, "Prompt", {
+    enumerable: !0,
+    get: function() {
+        return reactRouter.Prompt;
+    }
+}), Object.defineProperty(exports, "Redirect", {
+    enumerable: !0,
+    get: function() {
+        return reactRouter.Redirect;
+    }
+}), Object.defineProperty(exports, "Route", {
+    enumerable: !0,
+    get: function() {
+        return reactRouter.Route;
+    }
+}), Object.defineProperty(exports, "Router", {
+    enumerable: !0,
+    get: function() {
+        return reactRouter.Router;
+    }
+}), Object.defineProperty(exports, "StaticRouter", {
+    enumerable: !0,
+    get: function() {
+        return reactRouter.StaticRouter;
+    }
+}), Object.defineProperty(exports, "Switch", {
+    enumerable: !0,
+    get: function() {
+        return reactRouter.Switch;
+    }
+}), Object.defineProperty(exports, "generatePath", {
+    enumerable: !0,
+    get: function() {
+        return reactRouter.generatePath;
+    }
+}), Object.defineProperty(exports, "matchPath", {
+    enumerable: !0,
+    get: function() {
+        return reactRouter.matchPath;
+    }
+}), Object.defineProperty(exports, "useHistory", {
+    enumerable: !0,
+    get: function() {
+        return reactRouter.useHistory;
+    }
+}), Object.defineProperty(exports, "useLocation", {
+    enumerable: !0,
+    get: function() {
+        return reactRouter.useLocation;
+    }
+}), Object.defineProperty(exports, "useParams", {
+    enumerable: !0,
+    get: function() {
+        return reactRouter.useParams;
+    }
+}), Object.defineProperty(exports, "useRouteMatch", {
+    enumerable: !0,
+    get: function() {
+        return reactRouter.useRouteMatch;
+    }
+}), Object.defineProperty(exports, "withRouter", {
+    enumerable: !0,
+    get: function() {
+        return reactRouter.withRouter;
+    }
+}), exports.BrowserRouter = BrowserRouter, exports.HashRouter = HashRouter, exports.Link = Link, exports.NavLink = NavLink;
 
-},{}],"9tpci":[function(require,module,exports) {
+},{"react-router":"dvHa0","react":"21dqq","history":"6yWeD","prop-types":"7wKI2","tiny-warning":"82vrW","tiny-invariant":"fnIPv"}],"4tuA0":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$377f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$377f.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "GenreView", ()=>GenreView
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _reactRouterDom = require("react-router-dom");
+var _reactBootstrap = require("react-bootstrap");
+var _genreViewScss = require("./genre-view.scss");
+class GenreView extends _reactDefault.default.Component {
+    render() {
+        const { genre , onBackClick , movies  } = this.props;
+        return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, {
+            id: "genre-view-gv",
+            className: "d-flex align-items-center"
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card, {
+            id: "genre-view"
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Body, {
+            id: "card-body-gv"
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
+            id: "genre-gv"
+        }, "Genre: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+            className: "value"
+        }, genre.Name), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
+            id: "description-gv"
+        }, "Description: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+            className: "value"
+        }, genre.Description), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+            onClick: ()=>{
+                onBackClick(null);
+            }
+        }, "Back")))));
+    }
+}
+GenreView.propTypes = {
+    genre: _propTypesDefault.default.shape({
+        Name: _propTypesDefault.default.string.isRequired,
+        Description: _propTypesDefault.default.string.isRequired
+    }).isRequired,
+    onBackClick: _propTypesDefault.default.func.isRequired
+};
+
+  $parcel$ReactRefreshHelpers$377f.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"21dqq","prop-types":"7wKI2","react-router-dom":"cHIiW","react-bootstrap":"3AD9A","./genre-view.scss":"bk3gk","@parcel/transformer-js/src/esmodule-helpers.js":"9q0ob","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"hoveJ"}],"bk3gk":[function() {},{}],"9tpci":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$ad4a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -33187,7 +33480,8 @@ class DirectorView extends _reactDefault.default.Component {
     render() {
         const { director , onBackClick , movies  } = this.props;
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, {
-            id: "director-view-dv"
+            id: "director-view-dv",
+            className: "d-flex align-items-center"
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card, {
             id: "director-view"
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Body, {
@@ -33231,7 +33525,71 @@ DirectorView.propTypes = {
   window.$RefreshSig$ = prevRefreshSig;
 }
 },{"react":"21dqq","prop-types":"7wKI2","react-router-dom":"cHIiW","react-bootstrap":"3AD9A","./director-view.scss":"cVy0f","@parcel/transformer-js/src/esmodule-helpers.js":"9q0ob","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"hoveJ"}],"cVy0f":[function() {},{}],"2vVqf":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$3c12 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$3c12.prelude(module);
 
-},{}],"eBaMl":[function() {},{}]},["i9zCZ","kVrQt","d8Dch"], "d8Dch", "parcelRequirea0b8")
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "ProfileView", ()=>ProfileView
+) /*ProfileView.propTypes = {
+  user: PropTypes.shape({
+    UserName: PropTypes.string.isRequired,
+    Password: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    Birthday: PropTypes.string.isRequired,
+  }).isRequired,
+
+  onBackClick: PropTypes.func.isRequired,
+};*/ ;
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _reactRouterDom = require("react-router-dom");
+var _reactBootstrap = require("react-bootstrap");
+var _profileViewScss = require("./profile-view.scss");
+class ProfileView extends _reactDefault.default.Component {
+    render() {
+        const { user , onBackClick , movies  } = this.props;
+        return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, {
+            id: "profile-view-pv",
+            className: "d-flex align-items-center"
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card, {
+            id: "profile-view"
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Body, {
+            id: "card-body-pv"
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
+            id: "username-pv"
+        }, "Username: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+            className: "value"
+        }, user), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
+            id: "bio-dv"
+        }, "Password: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+            className: "value"
+        }, user.Password), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
+            id: "birth-year-dv"
+        }, "E-mail: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+            className: "value"
+        }, user.Email), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
+            id: "death-year-dv"
+        }, "Birthday: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+            className: "value"
+        }, user.Birthday), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+            onClick: ()=>{
+                onBackClick(null);
+            }
+        }, "Back")))));
+    }
+}
+
+  $parcel$ReactRefreshHelpers$3c12.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"21dqq","prop-types":"7wKI2","react-router-dom":"cHIiW","react-bootstrap":"3AD9A","./profile-view.scss":"eyKYH","@parcel/transformer-js/src/esmodule-helpers.js":"9q0ob","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"hoveJ"}],"eyKYH":[function() {},{}],"eBaMl":[function() {},{}]},["i9zCZ","kVrQt","d8Dch"], "d8Dch", "parcelRequirea0b8")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

@@ -77,6 +77,10 @@ export class MainView extends React.Component {
     return (
       <Router>
         <Menubar />
+        <div className='d-flex justify-content-center'>
+          <Link to={`/users/${user}`}>{user}</Link>
+        </div>
+
         <Row className='main-view justify-content-md-center'>
           <Route
             exact
