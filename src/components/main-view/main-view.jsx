@@ -18,6 +18,8 @@ import { ProfileView } from '../profile-view/profile-view';
 
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import './main-view.scss';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { useIsRTL } from 'react-bootstrap/esm/ThemeProvider';
 
 export class MainView extends React.Component {
   constructor() {
@@ -74,14 +76,10 @@ export class MainView extends React.Component {
 
   render() {
     const { movies, user } = this.state;
+
     return (
       <Router>
-        <Menubar />
-        <div className='d-flex justify-content-center'>
-          <Link to={`/users/${user}`}>
-            <Button>My Profile</Button>
-          </Link>
-        </div>
+        <Menubar user={user} />
 
         <Row className='main-view justify-content-md-center'>
           <Route
@@ -179,12 +177,11 @@ export class MainView extends React.Component {
 
           <Route
             path={`/users/${user}`}
-            render={({ match, history }) => {
+            render={({ history }) => {
               if (!user) return <Redirect to='/' />;
               return (
                 <Col>
                   <ProfileView
-                    movies={movies}
                     user={user}
                     onBackClick={() => history.goBack()}
                   />

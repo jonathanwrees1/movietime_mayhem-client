@@ -2,85 +2,75 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Form, Button, Card, Container, Row, Col } from 'react-bootstrap';
-
+import { UserInfo } from './user-info';
+import { FavoriteMovies } from './favorite-movies';
+import { UpdateUser } from './update-user';
 import './profile-view.scss';
 import axios from 'axios';
 
-export class ProfileView extends React.Component {
-  constructor() {
-    super();
+export function ProfileView(props) {
+  const [userInfo, setUserInfo] = useState();
 
-    this.state = {
-      UserName: null,
-      Password: null,
-      Email: null,
-      Birthday: null,
-    };
-  }
+  useEffect(() => {
+    const getUserInfo = () => {
+      let token = localStorage.getItem('token');
+      let profile = localStorage.getItem('user');
 
-  componentDidMount() {
-    let accessToken = localStorage.getItem('token');
-    if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem('user'),
-      });
-      this.getUserInfo(accessToken);
-    }
-  }
-
-  getUserInfo = (token) => {
-    const UserName = localStorage.getItem('user');
-    axios
-      .get(`https://movie-time-mayhem.herokuapp.com/users/${UserName}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        this.setState({
-          UserName: response.data.UserName,
-          Password: response.data.Password,
-          Email: response.data.Email,
-          Birthday: response.data.Birthday,
+      axios
+        .get(`https://movie-time-mayhem.herokuapp.com/users/${profile}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+          setUserInfo(response.data);
         });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+    };
 
-  render() {
-    const { movies, user, onBackClick } = this.props;
+    getUserInfo();
+  }, []);
 
+  if (!userInfo) {
     return (
-      <Container id='profile-view-pv' className='d-flex align-items-center'>
-        <Card id='profile-view'>
-          <Card.Body id='card-body-pv'>
-            <Card.Title id='username-pv'>User: </Card.Title>
-            <Card.Text className='value'>{user.UserName}</Card.Text>
-
-            <Card.Title id='bio-dv'>Password: </Card.Title>
-            <Card.Text className='value'>{user.Password}</Card.Text>
-
-            <Card.Title id='birth-year-dv'>E-mail: </Card.Title>
-            <Card.Text className='value'>{user.Email}</Card.Text>
-
-            <Card.Title id='death-year-dv'>Birthday: </Card.Title>
-            <Card.Text className='value'>{user.Birthday}</Card.Text>
-
-            <Button
-              onClick={() => {
-                onBackClick(null);
-              }}
-            >
-              Back
-            </Button>
-          </Card.Body>
-        </Card>
-      </Container>
+      <img src='https://images.unsplash.com/photo-1595433707802-6b2626ef1c91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80' />
     );
   }
+
+  return (
+    <Container>
+      <div id='profile-view-pv'>
+        <h1 id='profile-header-pv'> {userInfo.UserName}'s Profile </h1>
+
+        <UserInfo
+          username={userInfo.UserName}
+          email={userInfo.Email}
+          birthday={userInfo.Birthday}
+          favmovies={userInfo.FavoriteMovies}
+        />
+
+        <UpdateUser
+          username={userInfo.UserName}
+          email={userInfo.Email}
+          password={userInfo.Password}
+          birthday={userInfo.Birthday}
+          favmovies={userInfo.FavoriteMovies}
+        />
+
+        <FavoriteMovies favmovies={userInfo.FavoriteMovies} />
+      </div>
+    </Container>
+  );
 }
 
-/*ProfileView.propTypes = {
+/*
+
+<FavoriteMovies favoriteMovieList={favoriteMovieList} />
+      <UpdateUser handleSubmit={handleSubmit} handleUpdate={handleUpdate} />
+{user.map((potato) => (
+          <UserInfo username={potato.UserName} email={potato.Email} />
+        ))}
+
+
+
+ProfileView.propTypes = {
   user: PropTypes.shape({
     UserName: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired,
